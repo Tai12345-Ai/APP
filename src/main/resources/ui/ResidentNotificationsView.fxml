@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="rootPane" prefHeight="550.0" prefWidth="700.0" spacing="15.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.login.controller.ResidentNotificationsController">
+
+    <children>
+        <Label alignment="CENTER" maxWidth="Infinity" styleClass="view-title" text="Thông Báo Của Bạn" />
+
+        <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <children>
+                <Button onAction="#handleReloadNotifications" styleClass="action-button-secondary" text="Tải Lại">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+                <Button onAction="#handleMarkAllAsRead" styleClass="action-button-secondary" text="Đánh Dấu Tất Cả Đã Đọc">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+                <Pane HBox.hgrow="ALWAYS" />
+                <CheckBox fx:id="unreadOnlyCheckBox" onAction="#handleFilterChanged" selected="true" text="Chỉ hiện chưa đọc">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></CheckBox>
+            </children>
+        </HBox>
+
+        <ListView fx:id="notificationsListView" VBox.vgrow="ALWAYS">
+            <placeholder>
+                <Label text="Không có thông báo nào." />
+            </placeholder>
+        </ListView>
+
+        <HBox alignment="CENTER_RIGHT" spacing="10.0">
+            <children>
+                <Label fx:id="pageInfoLabel" text="Trang 1/1" />
+                <Button fx:id="prevPageButton" disable="true" onAction="#handlePrevPage" text="&lt; Trước">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+                <Button fx:id="nextPageButton" disable="true" onAction="#handleNextPage" text="Sau &gt;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+
+            </children>
+        </HBox>
+
+        <Label fx:id="statusLabel" managed="false" style="-fx-font-style: italic;" visible="false" />
+    </children>
+</VBox>

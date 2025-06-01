@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="243.0" prefWidth="488.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.login.controller.ConfirmChangePassController">
+    <children>
+        <Text fill="#bf1616" layoutX="10.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chúng tôi vừa gửi mã OTP vào email của bạn. Vui lòng điền mã để xác nhận mật khẩu!" textAlignment="CENTER" wrappingWidth="467.11328125">
+            <font>
+                <Font size="22.0" />
+            </font>
+        </Text>
+        <PasswordField fx:id="codeField" layoutX="120.0" layoutY="116.0" prefHeight="25.0" prefWidth="181.0" GridPane.columnIndex="1" GridPane.hgrow="NEVER" />
+        <Text fx:id="txtNotification" layoutX="120.0" layoutY="162.94921875" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <font>
+            <Font size="19.0" />
+         </font></Text>
+        <Label layoutX="81.0" layoutY="113.0" text="Mã">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Button fx:id="verifyButton" layoutX="409.0" layoutY="204.0" mnemonicParsing="false" onAction="#verifyCode" text="Xác nhận">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+    </children>
+</AnchorPane>

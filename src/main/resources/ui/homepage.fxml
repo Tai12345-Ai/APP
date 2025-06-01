@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="600.0" stylesheets="@../styles/Styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.login.controller.HomepageController">
+   <children>
+      <Text fill="#1692ae" layoutX="84.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CHÀO MỪNG ĐẾN VỚI ỨNG DỤNG QUẢN LÝ CHUNG CƯ BLUEMOON" textAlignment="CENTER" wrappingWidth="432.859375">
+         <font>
+            <Font name="Tahoma" size="27.0" />
+         </font>
+      </Text>
+      <Label layoutX="1.0" layoutY="450.0" prefHeight="17.0" prefWidth="600.0" />
+      <PieChart fx:id="gioiTinh" layoutX="14.0" layoutY="99.0" prefHeight="274.0" prefWidth="280.0" title="Thống kê tỉ lệ nam-nữ" titleSide="BOTTOM" />
+      <PieChart fx:id="doTuoi" layoutX="307.0" layoutY="99.0" prefHeight="274.0" prefWidth="280.0" title="Thống kê tỉ lệ các độ tuổi" titleSide="BOTTOM" />
+      <VBox layoutX="15.0" layoutY="373.0" prefHeight="219.0" prefWidth="576.0">
+         <children>
+            <StackPane prefHeight="28.0" prefWidth="576.0" style="-fx-border-style: solid; -fx-border-width: 1 1 0 1;">
+               <children>
+                  <Label text="TIN TỨC TRONG NGÀY">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+            <GridPane prefHeight="195.0" prefWidth="575.0" style="-fx-border-style: solid;">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-border-style: solid; -fx-border-width: 0 1 0 0;">
+                     <children>
+                        <VBox prefHeight="195.0" prefWidth="291.0">
+                           <children>
+                              <Text pickOnBounds="true" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="news" text="Khu tự trị dân tộc Thanh Hóa chính thức thành lập" wrappingWidth="171.13671875">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Text>
+                              <Label prefHeight="53.0" prefWidth="175.0" text="Thanh Hóa vừa được chính thức công nhận là 1 khu tự trị dân tộc với bộ máy hành chính riêng sau cuộc họp kéo dài" textOverrun="WORD_ELLIPSIS" wrapText="true" />
+                           </children>
+                        </VBox>
+                        <ImageView fitHeight="188.0" fitWidth="111.0" pickOnBounds="true" preserveRatio="true">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <image>
+                              <Image url="@../images/ThanhHoa.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="197.0" prefWidth="283.0" GridPane.columnIndex="1">
+                     <children>
+                        <VBox prefHeight="197.0" prefWidth="150.0">
+                           <children>
+                              <Text pickOnBounds="true" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="news" text="Chân dung tân tỉnh trưởng khu tự trị dân tộc Thanh Hóa" wrappingWidth="156.13671875">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </Text>
+                              <Label prefHeight="39.0" prefWidth="238.0" text="Ông Bùi ĐÌnh Sang - Nguyên Ủy viên Bộ Chính trị vừa được bầu làm" textOverrun="WORD_ELLIPSIS" wrapText="true" />
+                           </children>
+                        </VBox>
+                        <ImageView fitHeight="191.0" fitWidth="131.0" pickOnBounds="true" preserveRatio="true">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <image>
+                              <Image url="@../images/BuiDinhSang.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

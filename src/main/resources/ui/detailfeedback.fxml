@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="15" style="-fx-background-color: #f9f9f9;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.login.controller.DetailFeedBackController">
+
+    <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Chi tiết góp ý" />
+
+    <!-- Tiêu đề góp ý -->
+    <HBox spacing="10">
+        <Label minWidth="80" text="Tiêu đề:" />
+        <TextField fx:id="txtTieuDe" HBox.hgrow="ALWAYS" />
+    </HBox>
+
+    <!-- Nội dung góp ý -->
+    <HBox spacing="10">
+        <Label alignment="TOP_LEFT" minWidth="80" text="Nội dung:" />
+        <TextArea fx:id="txtNoiDung" prefRowCount="6" HBox.hgrow="ALWAYS" />
+    </HBox>
+   <HBox prefHeight="0.0" prefWidth="570.0">
+      <children>
+         <Label prefHeight="18.0" prefWidth="90.0" text="Thời gian gửi" />
+         <TextField fx:id="txtThoiGianGui" prefHeight="26.0" prefWidth="481.0" />
+      </children>
+   </HBox>
+   <HBox prefHeight="0.0" prefWidth="570.0">
+      <children>
+         <Label prefHeight="18.0" prefWidth="90.0" text="Người gửi" />
+         <TextField fx:id="txtNguoiGui" prefHeight="26.0" prefWidth="482.0" />
+      </children>
+   </HBox>
+   <HBox prefHeight="0.0" prefWidth="570.0">
+      <children>
+         <Label prefHeight="18.0" prefWidth="90.0" text="Trạng thái" />
+         <TextField fx:id="txtTrangThai" prefHeight="26.0" prefWidth="483.0" />
+      </children>
+   </HBox>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+</VBox>

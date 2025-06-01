@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="historyRootPane" spacing="15" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.login.controller.AdminNotificationHistoryController">
+    <children>
+        <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Lịch Sử Thông Báo Đã Gửi" />
+
+        <TitledPane expanded="false" text="Bộ lọc">
+            <content>
+                <GridPane hgap="10" vgap="10">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="30.0" prefHeight="30.0" />
+                        <RowConstraints minHeight="30.0" prefHeight="30.0" />
+                        <RowConstraints minHeight="30.0" prefHeight="30.0" />
+                        <RowConstraints minHeight="30.0" prefHeight="30.0" />
+                  <RowConstraints />
+                    </rowConstraints>
+                   <children>
+                       
+                       <Label text="ID Người gửi:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                       <TextField fx:id="senderFilterField" promptText="Admin ID" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+   
+                       <Label text="ID/Mô tả người nhận:" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                       <TextField fx:id="recipientFilterField" promptText="ID hoặc 'ALL'" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+   
+                       <Label text="Loại thông báo:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                       <ComboBox fx:id="typeFilterComboBox" prefWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+   
+                       <Label text="Tiêu đề chứa:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                       <TextField fx:id="subjectFilterField" promptText="Từ khóa trong tiêu đề" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+   
+                       <Label text="Kênh gửi:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                       <ComboBox fx:id="channelFilterComboBox" prefWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+   
+                       <Label text="Từ ngày:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                       <DatePicker fx:id="dateFromFilterPicker" prefWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+   
+                       <Label text="Đến ngày:" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                       <DatePicker fx:id="dateToFilterPicker" prefWidth="Infinity" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+   
+                       <Button onAction="#handleApplyFilters" prefHeight="30.0" styleClass="action-button" text="Áp dụng bộ lọc" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+                   </children>
+                </GridPane>
+            </content>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+        </TitledPane>
+
+        <!-- Đảm bảo fx:id của các TableColumn khớp với Controller -->
+        <TableView fx:id="notificationsTableView" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="notificationIdColumn" prefWidth="50" text="ID" />
+                <TableColumn fx:id="sentAtColumn" prefWidth="130" text="Thời gian gửi" />
+                <TableColumn fx:id="senderAdminColumn" prefWidth="100" text="Người gửi" />
+                <TableColumn fx:id="recipientColumn" prefWidth="100" text="Người nhận" />
+                <TableColumn fx:id="typeColumn" prefWidth="100" text="Loại" />
+                <TableColumn fx:id="subjectColumn" prefWidth="150" text="Tiêu đề" />
+                <TableColumn fx:id="contentSnippetColumn" prefWidth="200" text="Nội dung" />
+                <TableColumn fx:id="sendChannelsColumn" prefWidth="100" text="Kênh gửi" />
+                <TableColumn fx:id="linkColumn" prefWidth="100" text="Link" />
+            </columns>
+
+            <placeholder>
+                <Label text="Không có dữ liệu thông báo." />
+            </placeholder>
+            
+            <contextMenu>
+                <ContextMenu>
+                    <items>
+                        <MenuItem onAction="#handleViewNotificationDetail" text="Xem chi tiết" />
+                        <MenuItem onAction="#handleResendNotification" text="Gửi lại" />
+                    </items>
+                </ContextMenu>
+            </contextMenu>
+        </TableView>
+
+        <HBox alignment="CENTER" spacing="10">
+   <children>
+               <Label fx:id="totalItemsLabel" text="Tổng số: 0" />
+               <Region HBox.hgrow="ALWAYS" />
+               <Button fx:id="prevPageButton" disable="true" onAction="#handlePrevPage" text="&lt; Trước" />
+               <Label fx:id="pageInfoLabel" text="Trang 1/1" />
+               <Button fx:id="nextPageButton" disable="true" onAction="#handleNextPage" text="Sau &gt;" />
+   </children>
+        </HBox>
+        
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+           <children>
+               <Button onAction="#handleGoBack" styleClass="button-secondary" text="Quay lại màn hình gửi">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+               <Button onAction="#handleRefreshData" styleClass="button-primary" text="Làm mới dữ liệu">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+           </children>
+        </HBox>
+        
+        <Label fx:id="statusLabel" style="-fx-font-style: italic;" />
+    </children>
+</VBox>
