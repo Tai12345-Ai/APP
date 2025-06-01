@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.fx.login.controller.PaymentController"
+      spacing="10">
+    <padding>
+        <Insets top="15.0" right="15.0" bottom="15.0" left="15.0" />
+    </padding>
+
+    <Label text="QUẢN LÝ THANH TOÁN VÀ CHU KỲ TỰ ĐỘNG"
+           style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #2E86AB;"/>
+
+    <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+        <!-- TAB 1: THANH TOÁN -->
+        <Tab text="Thanh toán">
+            <VBox spacing="15">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+
+                <Label text="Danh sách khoản chưa thanh toán"
+                       style="-fx-font-size: 14; -fx-font-weight: bold"/>
+
+                <TableView fx:id="unpaidTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+                        <TableColumn fx:id="residentNameColumn" text="Tên cư dân" prefWidth="130"/>
+                        <TableColumn fx:id="apartmentNameColumn" text="Căn hộ" prefWidth="80"/>
+                        <TableColumn fx:id="totalPaymentColumn" text="Số tiền" prefWidth="100"/>
+                        <TableColumn fx:id="dueDateColumn" text="Hạn nộp" prefWidth="90"/>
+                        <TableColumn fx:id="statusColumn" text="Trạng thái" prefWidth="90"/>
+                        <TableColumn fx:id="descriptionColumn" text="Mô tả" prefWidth="200"/>
+                    </columns>
+                </TableView>
+
+                <VBox spacing="10" style="-fx-border-color: #CCCCCC; -fx-border-radius: 5; -fx-background-color: #F9F9F9;">
+                    <padding>
+                        <Insets top="15" right="15" bottom="15" left="15"/>
+                    </padding>
+
+                    <Label text="Thông tin thanh toán" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+
+                    <GridPane hgap="15" vgap="10">
+                        <Label text="Số tiền:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="amountField" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="200"/>
+
+                        <Label text="Phương thức:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <ComboBox fx:id="paymentMethodComboBox" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="200"/>
+
+                        <Label text="Ghi chú:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <TextField fx:id="notesField" GridPane.rowIndex="2" GridPane.columnIndex="1" prefWidth="200"/>
+
+                        <Button fx:id="payButton" text="Thanh toán"
+                                onAction="#handlePayment"
+                                style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;"
+                                GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                    </GridPane>
+                </VBox>
+            </VBox>
+        </Tab>
+
+        <!-- TAB 2: LỊCH SỬ THANH TOÁN -->
+        <Tab text="Lịch sử thanh toán">
+            <VBox spacing="15">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+
+                <Label text="Lịch sử thanh toán"
+                       style="-fx-font-size: 14; -fx-font-weight: bold"/>
+
+                <TableView fx:id="paymentHistoryTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="paymentIdColumn" text="ID" prefWidth="50"/>
+                        <TableColumn fx:id="paymentDateColumn" text="Ngày thanh toán" prefWidth="130"/>
+                        <TableColumn fx:id="paymentAmountColumn" text="Số tiền" prefWidth="100"/>
+                        <TableColumn fx:id="paymentMethodColumn" text="Phương thức" prefWidth="100"/>
+                        <TableColumn fx:id="paymentStatusColumn" text="Trạng thái" prefWidth="90"/>
+                        <TableColumn fx:id="paidByColumn" text="Người thanh toán" prefWidth="130"/>
+                        <TableColumn fx:id="paymentNotesColumn" text="Ghi chú" prefWidth="200"/>
+                    </columns>
+                </TableView>
+
+                <!-- ✅ BỎ onAction để tránh lỗi -->
+                <HBox spacing="10">
+                    <Button fx:id="refreshHistoryButton" text="Làm mới"
+                            style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+                </HBox>
+            </VBox>
+        </Tab>
+
+        <!-- TAB 3: QUẢN LÝ CHU KỲ -->
+        <Tab text="Chu kỳ tự động">
+            <VBox spacing="15">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+
+                <Label text="Danh sách chu kỳ tự động tạo khoản thu"
+                       style="-fx-font-size: 14; -fx-font-weight: bold"/>
+
+                <TableView fx:id="cycleTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="cycleIdColumn" text="ID" prefWidth="50"/>
+                        <TableColumn fx:id="feeNameColumn" text="Tên phí" prefWidth="200"/>
+                        <TableColumn fx:id="cycleTypeColumn" text="Chu kỳ" prefWidth="120"/>
+                        <TableColumn fx:id="nextDueColumn" text="Ngày tạo tiếp theo" prefWidth="150"/>
+                        <TableColumn fx:id="activeColumn" text="Đang hoạt động" prefWidth="120"/>
+                        <TableColumn fx:id="lastGeneratedColumn" text="Tạo gần nhất" prefWidth="120"/>
+                    </columns>
+                </TableView>
+
+                <HBox spacing="10">
+                    <Button fx:id="generateNowButton" text="Tạo khoản thu ngay"
+                            onAction="#handleGenerateNow"
+                            style="-fx-background-color: #FF9800; -fx-text-fill: white;"/>
+                    <!-- ✅ BỎ onAction để tránh lỗi -->
+                    <Button fx:id="toggleCycleButton" text="Bật/Tắt chu kỳ"
+                            style="-fx-background-color: #9C27B0; -fx-text-fill: white;"/>
+                </HBox>
+            </VBox>
+        </Tab>
+
+        <!-- TAB 4: THIẾT LẬP CHU KỲ -->
+        <Tab text="Thiết lập chu kỳ">
+            <VBox spacing="20">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+
+                <Label text="Thiết lập chu kỳ tự động tạo khoản thu"
+                       style="-fx-font-size: 14; -fx-font-weight: bold"/>
+
+                <GridPane hgap="15" vgap="15">
+                    <Label text="Loại phí:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <ComboBox fx:id="feeComboBox" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="300"/>
+
+                    <Label text="Chu kỳ:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <ComboBox fx:id="cycleTypeComboBox" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="300"/>
+
+                    <Label text="Ngày tạo đầu tiên:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <DatePicker fx:id="nextDueDatePicker" GridPane.rowIndex="2" GridPane.columnIndex="1" prefWidth="300"/>
+
+                    <Label text="Mô tả (tùy chọn):" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                    <TextField fx:id="cycleDescriptionField" GridPane.rowIndex="3" GridPane.columnIndex="1" prefWidth="300"/>
+                </GridPane>
+
+                <HBox spacing="15">
+                    <Button fx:id="createCycleButton" text="Tạo chu kỳ tự động"
+                            onAction="#handleCreateCycle"
+                            style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold;"/>
+
+                    <Button fx:id="createOneTimeButton" text="Tạo khoản thu đột xuất"
+                            onAction="#handleCreateOneTime"
+                            style="-fx-background-color: #9C27B0; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                </HBox>
+
+                <VBox spacing="10" style="-fx-border-color: #E0E0E0; -fx-border-radius: 5; -fx-background-color: #F5F5F5;">
+                    <padding>
+                        <Insets top="15" right="15" bottom="15" left="15"/>
+                    </padding>
+
+                    <Label text="Hướng dẫn:" style="-fx-font-weight: bold;"/>
+                    <Label text="• Chu kỳ tự động: Hệ thống sẽ tự động tạo khoản thu theo chu kỳ đã thiết lập"/>
+                    <Label text="• Khoản thu đột xuất: Tạo một lần duy nhất cho ngày được chọn"/>
+                    <Label text="• Hệ thống tự động chạy vào 00:30 hàng ngày để kiểm tra và tạo khoản thu"/>
+                    <Label text="• Bạn có thể tạo khoản thu ngay lập tức bằng nút 'Tạo khoản thu ngay'"/>
+                </VBox>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>

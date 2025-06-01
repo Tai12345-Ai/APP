@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.fx.login.controller.ResidentFeeController"
+      spacing="15">
+    <padding>
+        <Insets top="20.0" right="20.0" bottom="20.0" left="20.0" />
+    </padding>
+
+    <Label text="THÔNG TIN KHOẢN PHÍ - CƯ DÂN"
+           style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #2E86AB;"/>
+
+    <!-- Thông tin cư dân -->
+    <VBox spacing="5" style="-fx-border-color: #E0E0E0; -fx-border-radius: 5; -fx-background-color: #F0F8FF;">
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10"/>
+        </padding>
+        <Label fx:id="infoLabel" text="Thông tin cư dân" style="-fx-font-weight: bold;"/>
+    </VBox>
+
+    <!-- Thống kê -->
+    <HBox spacing="20" alignment="CENTER">
+        <VBox alignment="CENTER" spacing="5" style="-fx-border-color: #4CAF50; -fx-border-radius: 5; -fx-background-color: #E8F5E8;">
+            <padding><Insets top="10" right="15" bottom="10" left="15"/></padding>
+            <Label text="Tổng số phí" style="-fx-font-weight: bold;"/>
+            <Label fx:id="totalFeesLabel" text="0" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #4CAF50;"/>
+        </VBox>
+
+        <VBox alignment="CENTER" spacing="5" style="-fx-border-color: #F44336; -fx-border-radius: 5; -fx-background-color: #FFEBEE;">
+            <padding><Insets top="10" right="15" bottom="10" left="15"/></padding>
+            <Label text="Chưa thanh toán" style="-fx-font-weight: bold;"/>
+            <Label fx:id="unpaidCountLabel" text="0" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #F44336;"/>
+        </VBox>
+
+        <VBox alignment="CENTER" spacing="5" style="-fx-border-color: #2196F3; -fx-border-radius: 5; -fx-background-color: #E3F2FD;">
+            <padding><Insets top="10" right="15" bottom="10" left="15"/></padding>
+            <Label text="Đã thanh toán" style="-fx-font-weight: bold;"/>
+            <Label fx:id="paidCountLabel" text="0" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #2196F3;"/>
+        </VBox>
+    </HBox>
+
+    <!-- Thanh tìm kiếm -->
+    <HBox spacing="15" alignment="CENTER_LEFT">
+        <TextField fx:id="searchField" promptText="Tìm kiếm theo tên phí, số tiền..." prefWidth="300"/>
+        <Button fx:id="searchButton" text="Tìm kiếm" onAction="#onSearch"
+                style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+        <Button text="Làm mới" onAction="#onRefresh"
+                style="-fx-background-color: #9E9E9E; -fx-text-fill: white;"/>
+    </HBox>
+
+    <!-- Bảng danh sách khoản phí -->
+    <TableView fx:id="feeTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID" prefWidth="60"/>
+            <TableColumn fx:id="feeNameColumn" text="Tên khoản phí" prefWidth="200"/>
+            <TableColumn fx:id="amountDueColumn" text="Số tiền phải nộp" prefWidth="150"/>
+            <TableColumn fx:id="monthlyFeeColumn" text="Phí hàng tháng" prefWidth="150"/>
+            <TableColumn fx:id="statusColumn" text="Trạng thái" prefWidth="120"/>
+        </columns>
+    </TableView>
+
+    <!-- Thông tin hướng dẫn -->
+    <VBox spacing="5" style="-fx-border-color: #E0E0E0; -fx-border-radius: 5; -fx-background-color: #F5F5F5;">
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10"/>
+        </padding>
+        <Label text="Hướng dẫn:" style="-fx-font-weight: bold;"/>
+        <Label text="• Màu xanh: Đã thanh toán"/>
+        <Label text="• Màu đỏ: Chưa thanh toán"/>
+        <Label text="• Sử dụng thanh tìm kiếm để lọc khoản phí"/>
+    </VBox>
+</VBox>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.fx.login.controller.AdminFeeController"
+      spacing="15">
+    <padding>
+        <Insets top="20.0" right="20.0" bottom="20.0" left="20.0" />
+    </padding>
+
+    <Label text="QUẢN LÝ KHOẢN THU - ADMIN"
+           style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #2E86AB;"/>
+
+    <!-- Thanh tìm kiếm và nút thêm -->
+    <HBox spacing="15" alignment="CENTER_LEFT">
+        <TextField fx:id="searchField" promptText="Tìm kiếm theo tên, số tiền..." prefWidth="300"/>
+        <Button fx:id="searchButton" text="Tìm kiếm" onAction="#onSearch"
+                style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="addFeeButton" text="Thêm khoản thu" onAction="#onAdd"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;"/>
+    </HBox>
+
+    <!-- Bảng danh sách khoản thu -->
+    <TableView fx:id="feeTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID" prefWidth="60"/>
+            <TableColumn fx:id="feeNameColumn" text="Tên khoản thu" prefWidth="200"/>
+            <TableColumn fx:id="amountDueColumn" text="Số tiền" prefWidth="120"/>
+            <TableColumn fx:id="monthlyFeeColumn" text="Phí hàng tháng" prefWidth="120"/>
+            <TableColumn fx:id="unpaidHouseholdsColumn" text="Hộ chưa nộp" prefWidth="150"/>
+        </columns>
+    </TableView>
+
+    <!-- Nút hành động -->
+    <HBox spacing="15" alignment="CENTER">
+        <Button fx:id="updateFeeButton" text="Sửa thông tin" onAction="#onUpdate"
+                style="-fx-background-color: #FF9800; -fx-text-fill: white;"/>
+        <Button fx:id="deleteFeeButton" text="Xóa khoản thu" onAction="#onDelete"
+                style="-fx-background-color: #F44336; -fx-text-fill: white;"/>
+        <Button text="Làm mới" onAction="#onRefresh"
+                style="-fx-background-color: #9E9E9E; -fx-text-fill: white;"/>
+    </HBox>
+
+    <!-- Thông tin hướng dẫn -->
+    <VBox spacing="5" style="-fx-border-color: #E0E0E0; -fx-border-radius: 5; -fx-background-color: #F5F5F5;">
+        <padding>
+            <Insets top="10" right="10" bottom="10" left="10"/>
+        </padding>
+        <Label text="Hướng dẫn sử dụng:" style="-fx-font-weight: bold;"/>
+        <Label text="• Nhấp đúp vào một dòng để xem chi tiết"/>
+        <Label text="• Sử dụng nút 'Xem' ở cột 'Hộ chưa nộp' để xem danh sách hộ chưa thanh toán"/>
+        <Label text="• Chỉ admin mới có quyền thêm, sửa, xóa khoản thu"/>
+    </VBox>
+</VBox>

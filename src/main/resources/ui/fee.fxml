@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.login.controller.FeeController">
+   <children>
+      <BorderPane>
+      
+          <!-- TOP: Thanh tìm kiếm -->
+          <top>
+              <HBox spacing="10">
+                  <padding>
+                      <Insets bottom="15" left="20" right="20" top="15" />
+                  </padding>
+                 <children>
+                     <TextField fx:id="searchField" promptText="Nhập tên khoản thu, hoặc khoản thu tháng,..." HBox.hgrow="ALWAYS" />
+                     <Button onAction="#onSearch" text="Tìm kiếm">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                     <Button onAction="#initialize" text="Tải lại">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                 </children>
+              </HBox>
+          </top>
+      
+          <!-- CENTER: Bảng khoản thu -->
+          <center>
+              <VBox spacing="10">
+                  <padding>
+                      <Insets bottom="10" left="20" right="20" top="10" />
+                  </padding>
+                 <children>
+         
+                     <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Danh sách khoản thu chưa nộp" />
+         
+                     <TableView fx:id="feeTable" prefHeight="400">
+                         <columns>
+                             <TableColumn fx:id="idColumn" prefWidth="60" text="ID" />
+                             <TableColumn fx:id="feeNameColumn" prefWidth="140.79998779296875" text="Tên khoản thu" />
+                             <TableColumn fx:id="amountDueColumn" prefWidth="176.7999725341797" text="Số tiền cần nộp" />
+                             <TableColumn fx:id="monthlyFeeColumn" prefWidth="113.60003662109375" text="Khoản thu tháng" />
+                             <TableColumn fx:id="unpaidHouseholdsColumn" prefWidth="124.00006103515625" text="Số căn hộ chưa nộp" />
+                         </columns>
+                     </TableView>
+                 </children>
+              </VBox>
+          </center>
+      
+          <!-- BOTTOM: Các nút thao tác -->
+          <bottom>
+              <HBox alignment="CENTER" spacing="15">
+                  <padding>
+                      <Insets bottom="15" left="20" right="20" top="15" />
+                  </padding>
+                 <children>
+                     <Button fx:id="addFeeButton" onAction="#onAdd" prefHeight="26.0" prefWidth="150.0" text="Thêm khoản thu mới">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                     <Button fx:id="updateFeeButton" onAction="#onUpdate" prefWidth="100" text="Cập nhật">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                     <Button fx:id="deleteFeeButton" onAction="#onDelete" prefWidth="100" text="Xóa">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                 </children>
+              </HBox>
+          </bottom>
+      
+      </BorderPane>
+   </children>
+</AnchorPane>

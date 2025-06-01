@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.login.controller.FeeFormController">
+    <padding>
+        <Insets bottom="10" left="10" right="10" top="10" />
+    </padding>
+   <children>
+   
+       <Label text="Tên khoản thu" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+       <TextField fx:id="feeName" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+   
+       <Label text="Số tiền cần nộp" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+       <TextField fx:id="amountDue" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+   
+       <Label text="Khoản thu của tháng" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+       <TextField fx:id="monthlyFee" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+   
+       <Button onAction="#onSave" text="Lưu" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+   </children>
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+</GridPane>

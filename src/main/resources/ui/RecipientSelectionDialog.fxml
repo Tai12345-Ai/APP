@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="500.0" prefWidth="700.0" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.login.controller.RecipientSelectionDialogController">
+    <padding>
+        <Insets bottom="10" left="10" right="10" top="10" />
+    </padding>
+    <children>
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Chọn người nhận thông báo" />
+        
+        <HBox alignment="CENTER_LEFT" spacing="10">
+           <children>
+               <Label text="Tìm kiếm:" />
+               <TextField fx:id="searchField" promptText="Tìm theo ID, tên, email hoặc căn hộ" HBox.hgrow="ALWAYS" />
+               <Button onAction="#handleSearch" text="Tìm">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+           </children>
+        </HBox>
+        
+        <TableView fx:id="residentTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="selectColumn" prefWidth="50" text="Chọn" />
+                <TableColumn fx:id="idColumn" prefWidth="50" text="ID" />
+                <TableColumn fx:id="nameColumn" prefWidth="150" text="Họ và tên" />
+                <TableColumn fx:id="emailColumn" prefWidth="200" text="Email" />
+                <TableColumn fx:id="phoneColumn" prefWidth="120" text="Số điện thoại" />
+                <TableColumn fx:id="apartmentColumn" prefWidth="100" text="Căn hộ" />
+            </columns>
+            <placeholder>
+                <Label text="Không tìm thấy thông tin cư dân" />
+            </placeholder>
+        </TableView>
+        
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+           <children>
+               <Label fx:id="selectionCountLabel" text="Đã chọn: 0 người" />
+               <Region HBox.hgrow="ALWAYS" />
+               <Button onAction="#handleSelectAll" text="Chọn tất cả">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+               <Button onAction="#handleDeselectAll" text="Bỏ chọn tất cả">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+               <Button onAction="#handleCancel" text="Hủy">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+               <Button defaultButton="true" onAction="#handleConfirm" text="Xác nhận">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+           </children>
+        </HBox>
+    </children>
+</VBox>

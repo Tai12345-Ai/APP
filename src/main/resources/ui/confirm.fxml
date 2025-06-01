@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="577.0" prefWidth="640.0" stylesheets="@../styles/Styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.login.controller.ConfirmController">
+    <children>
+        <ImageView fitHeight="577.0" fitWidth="659.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/img.png" />
+            </image>
+        </ImageView>
+        <VBox id="login-view" layoutX="23.0" layoutY="127.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="323.0" prefWidth="600.0" styleClass="login-view" stylesheets="@../styles/Styles.css">
+            <children>
+                <HBox spacing="185.0" style="-fx-border-style: solid;" styleClass="login-title">
+                    <children>
+                        <Label styleClass="header" text="XÁC NHẬN THÔNG TIN">
+                            <font>
+                                <Font size="20.0" />
+                            </font></Label>
+                  <Label layoutX="27.0" layoutY="27.0" onMouseClicked="#loadLogin" styleClass="header" text="ĐĂNG NHẬP →">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+                    </children>
+                </HBox>
+                <VBox alignment="CENTER" styleClass="login-body">
+                    <children>
+                  <Text fill="#bf1616" strokeType="OUTSIDE" strokeWidth="0.0" text="Chúng tôi vừa gửi mã OTP vào địa chỉ email bạn đăng kí. Vui lòng điền mã để xác thực tài khoản!" textAlignment="CENTER" wrappingWidth="466.25341796875">
+                     <font>
+                        <Font name="Tahoma" size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Text>
+                        <GridPane hgap="10.0" vgap="5.0">
+                            <columnConstraints>
+                                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="217.0" minWidth="10.0" prefWidth="83.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="359.0" minWidth="10.0" prefWidth="307.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <Label text="Mã" GridPane.rowIndex="2">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font></Label>
+                                <PasswordField fx:id="codeField" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font></PasswordField>
+                                <HBox styleClass="sp-5" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <children>
+                                      <Label fx:id="lblConfirm" textFill="RED">
+                                          <font>
+                                              <Font size="14.0" />
+                                          </font>
+                                      </Label>
+                           </children></HBox>
+                                <Button mnemonicParsing="false" onAction="#handleVerifyCode" text="XÁC NHẬN" textFill="#218161" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                    <font>
+                                        <Font name="Tahoma" size="15.0" />
+                                    </font>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor></Button>
+                            </children>
+                        </GridPane>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

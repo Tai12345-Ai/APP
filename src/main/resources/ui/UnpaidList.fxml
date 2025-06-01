@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.login.controller.UnpaidListController">
+
+    <!-- TOP: Thanh tìm kiếm -->
+    <top>
+        <HBox spacing="10">
+            <padding>
+                <Insets bottom="15" left="20" right="20" top="15" />
+            </padding>
+           <children>
+               <TextField fx:id="searchField" promptText="Nhập tên chủ hộ, hoặc số căn hộ..." HBox.hgrow="ALWAYS" />
+               <Button onAction="#onSearch" text="Tìm kiếm">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+               <Button onAction="#initialize" text="Tải lại">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+           </children>
+        </HBox>
+    </top>
+
+    <!-- CENTER: Bảng cư dân -->
+    <center>
+        <VBox spacing="10">
+            <padding>
+                <Insets bottom="10" left="20" right="20" top="10" />
+            </padding>
+           <children>
+            <HBox prefHeight="24.0" prefWidth="614.0" spacing="5.0">
+               <children>
+                  <Label style="-fx-font-size: 15; -fx-font-weight: bold;" text="Danh sách hộ chưa nộp khoản thu:" />
+                  <TextField fx:id="feeNameField" prefHeight="26.0" prefWidth="80.0" />
+                  <Label style="-fx-font-size: 15; -fx-font-weight: bold;" text="Tháng" />
+                  <TextField fx:id="monthlyFeeField" prefHeight="26.0" prefWidth="66.0" />
+         
+                     <Label style="-fx-font-size: 15; -fx-font-weight: bold;" text="Số hộ chưa nộp:" />
+                  <TextField fx:id="unpaidHouseholdsField" prefHeight="26.0" prefWidth="38.0" />
+               </children>
+            </HBox>
+   
+               <TableView fx:id="unpaidTable" prefHeight="400">
+                   <columns>
+                       <TableColumn fx:id="idColumn" prefWidth="60" text="ID" />
+                       <TableColumn fx:id="residentNameColumn" prefWidth="150" text="Họ tên" />
+                       <TableColumn fx:id="apartmentNameColumn" prefWidth="138.39996337890625" text="Căn hộ" />
+                       <TableColumn fx:id="totalPaymentColumn" prefWidth="147.99996948242188" text="Số tiền cần nộp còn lại" />
+                       <TableColumn fx:id="dueDateColumn" prefWidth="114.4000244140625" text="Hạn nộp" />
+                   </columns>
+               </TableView>
+           </children>
+        </VBox>
+    </center>
+
+    <!-- BOTTOM: Các nút thao tác -->
+    <bottom>
+        <HBox alignment="CENTER" spacing="15.0">
+            <padding>
+                <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+            </padding>
+           <children>
+               <Button fx:id="addFormButton" onAction="#onAdd" prefHeight="26.0" prefWidth="109.0" text="Thêm hộ cần nộp">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+               <Button fx:id="updateFormButton" onAction="#onUpdate" prefWidth="100" text="Cập nhật">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+               <Button fx:id="deleteFormButton" onAction="#onDelete" prefWidth="100" text="Xóa">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+           </children>
+        </HBox>
+    </bottom>
+
+</BorderPane>

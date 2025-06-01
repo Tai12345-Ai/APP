@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="281.0" prefWidth="325.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fx.login.controller.ChangeInfoController">
+   <children>
+      <GridPane hgap="10.0" layoutX="12.0" layoutY="14.0" prefHeight="223.0" prefWidth="301.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="136.0" minWidth="10.0" prefWidth="98.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="188.0" minWidth="10.0" prefWidth="184.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Họ tên">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label text="Email" GridPane.rowIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label text="Giới tính" GridPane.rowIndex="2">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label text="Quốc tịch" GridPane.rowIndex="3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="newName" promptText="Bỏ trống để không lưu" GridPane.columnIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="newEmail" promptText="Bỏ trống để không lưu" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <ComboBox fx:id="newSex" prefHeight="25.0" prefWidth="167.0" promptText="Bỏ chọn để không lưu" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="newNationality" prefHeight="25.0" prefWidth="167.0" promptText="Bỏ chọn để không lưu" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Text fx:id="txtNotification" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <font>
+                  <Font size="17.0" />
+               </font></Text>
+         </children>
+      </GridPane>
+      <Button fx:id="btnSave" layoutX="277.0" layoutY="242.0" mnemonicParsing="false" onAction="#saveInfo" text="Lưu">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+   </children>
+</AnchorPane>
